@@ -166,8 +166,13 @@ The agent decided on its own to call `list_categories` and then `get_quote`.
 Type `exit` to quit.
 
 > No OpenAI key? AI-6 also supports local [Ollama](https://ollama.com) models.
-> Set `default_model_id` in `ai6/config.yaml` to a model you've pulled (e.g.
-> `qwen2.5-coder:32b`) and drop the `provider_config.openai` block.
+> Set `default_model_id` in `ai6/config.yaml` to a supported Ollama model and
+> drop the `provider_config.openai` block. The model must be both pulled
+> (`ollama pull <model>`) **and** known to AI-6 — it looks the context-window
+> size up in a fixed table and errors on anything else. Supported ids:
+> `qwen2.5-coder:32b`, `qwen3:32b`, `gpt-oss:20b`, `gpt-oss:120b`,
+> `deepseek-r1:70b`, `devstral:24b`. (Tool-calling quality varies by model;
+> `gpt-oss:20b` is verified to drive the quote tools correctly.)
 
 ---
 

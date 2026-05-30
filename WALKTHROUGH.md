@@ -95,21 +95,28 @@ scoped packages, add `--registry=https://registry.npmjs.org` to `npx`.)
 
 **GUI mode:**
 
+Point the Inspector at our `.mcp.json` (the same file Claude Code uses) and
+name the server — it opens with the STDIO transport and command pre-filled:
+
 ```bash
-uv run mcp dev quote_server/quote_mcp_server.py
+npx @modelcontextprotocol/inspector --config .mcp.json --server quotes
 ```
 
-This opens a browser tab. ⚠️ The current Inspector (0.21.2) **boots with a
-streamable-HTTP connection to `localhost:5000` and won't auto-wire our STDIO
-server** — you'll see `ECONNREFUSED` until you switch it by hand. In the left
-panel:
+A browser tab opens with **Transport Type: STDIO**, **Command: `uv`**, and our
+arguments already populated. Click **Connect** (top-left) — the status flips to
+**Connected** — then open the **Tools** tab, **List Tools**, and run them.
 
-- **Transport Type:** `STDIO`
-- **Command:** `uv`
-- **Arguments:** `run python quote_server/quote_mcp_server.py`
+(The committed `.mcp.json` has an absolute `--directory` path. If you cloned the
+repo somewhere other than `~/git/summit-ai-mcp-demo`, edit that path first — or
+regenerate the file with the Claude Code step in [3.1](#31--claude-code).)
 
-Click **Connect**, then **List Tools** and call them. (Run `mcp dev` from the
-repo root so the relative path resolves.)
+> ⚠️ Don't use `uv run mcp dev quote_server/quote_mcp_server.py` for the GUI: it
+> shells out to the Inspector in a way the current build (0.21.2) ignores, so
+> the UI falls back to a streamable-HTTP connection to `localhost:5000` and you
+> get `ECONNREFUSED`. The `--config`/`--server` form above avoids that. (If you
+> ever land in that state, just set Transport to `STDIO`, Command `uv`,
+> Arguments `--directory <repo> run python quote_server/quote_mcp_server.py`,
+> and Connect.)
 
 If you just want to confirm the server works, the smoke test in 1.1 is simpler
 than any of this.

@@ -30,6 +30,9 @@ htmlcov/
 # AI-6 conversation memory created at runtime
 memory/
 
+# Playwright MCP snapshot artifacts
+.playwright-mcp/
+
 # Editor / OS
 .idea
 .vscode/

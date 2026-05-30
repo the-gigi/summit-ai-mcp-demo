@@ -70,26 +70,49 @@ Unknown category 'banana': '' (nothing, as expected)
 That's a complete, working MCP server. Everything below is just pointing
 different hosts at it.
 
-### 1.2 — Optional: the visual MCP Inspector
+### 1.2 — Optional: the MCP Inspector
 
-The [MCP Inspector](https://github.com/modelcontextprotocol/inspector) is a
-browser UI for poking at servers. Launch it (needs Node/npx):
+The [MCP Inspector](https://github.com/modelcontextprotocol/inspector) is
+Anthropic's official tool for poking at servers (needs Node/npx). It has two
+modes.
+
+**CLI mode (recommended — no browser, scriptable):**
+
+```bash
+# list the tools
+npx @modelcontextprotocol/inspector --cli \
+  uv run python quote_server/quote_mcp_server.py \
+  --method tools/list
+
+# call a tool
+npx @modelcontextprotocol/inspector --cli \
+  uv run python quote_server/quote_mcp_server.py \
+  --method tools/call --tool-name get_quote --tool-arg category=stoicism
+```
+
+The second command prints the quote as JSON. (If your npm registry rejects
+scoped packages, add `--registry=https://registry.npmjs.org` to `npx`.)
+
+**GUI mode:**
 
 ```bash
 uv run mcp dev quote_server/quote_mcp_server.py
 ```
 
-It opens a browser tab. ⚠️ The current Inspector (0.21.2) **defaults to an
-HTTP connection and won't auto-wire our STDIO server** — you'll see
-`ECONNREFUSED` until you set it up by hand. In the left panel:
+This opens a browser tab. ⚠️ The current Inspector (0.21.2) **boots with a
+streamable-HTTP connection to `localhost:5000` and won't auto-wire our STDIO
+server** — you'll see `ECONNREFUSED` until you switch it by hand. In the left
+panel:
 
 - **Transport Type:** `STDIO`
 - **Command:** `uv`
 - **Arguments:** `run python quote_server/quote_mcp_server.py`
 
 Click **Connect**, then **List Tools** and call them. (Run `mcp dev` from the
-repo root so the relative path resolves.) If you just want to confirm the server
-works, the smoke test in 1.1 is simpler.
+repo root so the relative path resolves.)
+
+If you just want to confirm the server works, the smoke test in 1.1 is simpler
+than any of this.
 
 ---
 

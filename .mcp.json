@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "quotes": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/gigi/git/summit-ai-mcp-demo",
+        "run",
+        "python",
+        "quote_server/quote_mcp_server.py"
+      ],
+      "env": {}
+    }
+  }
+}

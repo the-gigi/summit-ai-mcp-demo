@@ -1,0 +1,39 @@
+# AI-6 configuration for the Quote Assistant demo.
+#
+# The only thing that wires in our MCP server is `mcp_tools_dirs`: AI-6
+# scans that directory, launches every server it finds over STDIO, discovers
+# their tools, and exposes them to the agent as if they were native tools.
+#
+# ${DEMO_DIR} is set by quote_assistant.py to this repo's root, so the config
+# works no matter where you cloned the repo.
+default_model_id: gpt-5
+
+# AI-6 requires a native-tools directory. This demo only uses MCP tools, so
+# this one is intentionally empty.
+tools_dirs:
+  - ${DEMO_DIR}/ai6/native_tools
+
+# Our custom MCP server lives here. The directory contains only the quote
+# server, so AI-6 launches just that one.
+mcp_tools_dirs:
+  - ${DEMO_DIR}/quote_server
+
+memory_dir: ${DEMO_DIR}/memory
+checkpoint_interval: 3
+
+provider_config:
+  openai:
+    api_key: ${OPENAI_API_KEY}
+
+# Keep the agent focused on quoting so the demo stays on topic.
+enabled_tools:
+  - list_categories
+  - get_quote
+
+system_prompt: |
+  You are a thoughtful quote assistant. When a user asks for inspiration,
+  a quote, or mentions a mood or topic, use the `list_categories` tool to see
+  what's available and the `get_quote` tool to fetch a quote for the best
+  matching category. If `get_quote` returns nothing, tell the user there's no
+  quote for that category and offer the categories that do exist. Keep replies
+  short and warm.

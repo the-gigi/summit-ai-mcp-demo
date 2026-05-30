@@ -1,0 +1,10 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+    "quotes": {
+      "type": "local",
+      "command": ["uv", "--directory", "/Users/gigi/git/summit-ai-mcp-demo", "run", "python", "quote_server/quote_mcp_server.py"],
+      "enabled": true
+    }
+  }
+}

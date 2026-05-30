@@ -1,0 +1,3 @@
+# This directory is intentionally empty.
+# AI-6 requires a native tools directory; this demo only uses MCP tools,
+# so there are no native AI-6 tools here.

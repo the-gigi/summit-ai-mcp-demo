@@ -196,7 +196,7 @@ Run `claude` in the repo and approve the project server when prompted, then:
 > give me a quote about creativity
 ```
 
-Verify anytime with `claude mcp list`.
+Verify anytime with inside claude with  `/mcp`
 
 ### 3.2 — Codex
 

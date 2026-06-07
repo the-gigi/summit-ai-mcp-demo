@@ -33,6 +33,12 @@ memory/
 # Playwright MCP snapshot artifacts
 .playwright-mcp/
 
+# Slidev / node
+node_modules/
+slides/dist/
+slides/.slidev/
+slides/components.d.ts
+
 # Editor / OS
 .idea
 .vscode/

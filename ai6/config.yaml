@@ -23,7 +23,7 @@ checkpoint_interval: 3
 
 provider_config:
   openai:
-    api_key: ${OPENAI_API_KEY}
+    api_key: ${OPENAI_API_KEY_IG}
 
 # Keep the agent focused on quoting so the demo stays on topic.
 enabled_tools:

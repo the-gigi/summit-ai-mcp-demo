@@ -1,0 +1,130 @@
+/* Personal AI Agents — deck theme, matched to the title card (cover.png).
+   Palette sampled from the card: navy #050F2B→#01081B, accent #FFEA00, white text. */
+
+:root {
+  --pai-bg-1: #0A1740;
+  --pai-bg-2: #050F2B;
+  --pai-bg-3: #01081B;
+  --pai-accent: #FFEA00;
+  --pai-fg: #FFFFFF;
+  --pai-muted: rgba(226, 232, 255, 0.66);
+  --pai-panel: rgba(255, 255, 255, 0.045);
+  --pai-border: rgba(255, 234, 0, 0.55);
+}
+
+/* base slide surface */
+.slidev-layout {
+  color: var(--pai-fg);
+  background: radial-gradient(125% 125% at 78% -5%,
+      var(--pai-bg-1) 0%, var(--pai-bg-2) 46%, var(--pai-bg-3) 100%);
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* the cover slide keeps its own PNG background */
+.slidev-layout.image,
+.slidev-layout.cover-slide {
+  background: #01081B;
+}
+
+/* headings */
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+  font-family: 'Montserrat', 'Inter', sans-serif;
+  color: var(--pai-fg);
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.slidev-layout h1 {
+  position: relative;
+  line-height: 1.08;
+  padding-bottom: 0.4rem;
+}
+
+/* yellow accent bar under every H1 — echoes the card's yellow highlights */
+.slidev-layout h1::after {
+  content: '';
+  display: block;
+  width: 3.2rem;
+  height: 0.28rem;
+  margin-top: 0.55rem;
+  background: var(--pai-accent);
+  border-radius: 999px;
+}
+
+.slidev-layout h2 {
+  color: var(--pai-muted);
+  font-weight: 600;
+}
+
+/* bold text -> yellow, like the highlighted keywords on the card */
+.slidev-layout strong {
+  color: var(--pai-accent);
+  font-weight: 700;
+}
+
+.slidev-layout a {
+  color: var(--pai-accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 234, 0, 0.4);
+}
+
+/* inline accent helper: <span class="hl">word</span> */
+.hl { color: var(--pai-accent); }
+
+/* code blocks -> darker navy panel with a hairline border */
+.slidev-layout pre {
+  background: rgba(2, 8, 24, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.6rem;
+}
+.slidev-layout :not(pre) > code {
+  color: var(--pai-accent);
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 0.3rem;
+  padding: 0.05rem 0.3rem;
+}
+
+/* tables — accent header, hairline rows (card treatment) */
+.slidev-layout table { border-collapse: collapse; width: 100%; }
+.slidev-layout th {
+  color: var(--pai-accent);
+  text-align: left;
+  border-bottom: 2px solid var(--pai-border);
+  padding: 0.4rem 0.6rem;
+}
+.slidev-layout td {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.09);
+  padding: 0.4rem 0.6rem;
+}
+
+/* bordered callouts -> yellow rounded box like the card's title/date chips */
+.slidev-layout .border {
+  border-color: var(--pai-border) !important;
+  border-radius: 0.8rem;
+  background: var(--pai-panel);
+}
+
+/* section dividers */
+.slidev-layout.section h1 {
+  font-size: 3rem;
+  color: var(--pai-fg);
+}
+.slidev-layout.section h1::after {
+  width: 4.5rem;
+  height: 0.34rem;
+}
+
+/* persistent repo footer on every slide except the cover */
+.slidev-layout:not(.image):not(.cover-slide)::before {
+  content: 'github.com/the-gigi/summit-ai-mcp-demo';
+  position: absolute;
+  right: 1.1rem;
+  bottom: 0.7rem;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.66rem;
+  letter-spacing: 0.04em;
+  color: var(--pai-muted);
+  z-index: 20;
+}

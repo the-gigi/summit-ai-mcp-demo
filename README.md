@@ -109,3 +109,9 @@ codex mcp add quotes \
 One ~65-line server, written once against the MCP interface, works unchanged in
 an agentic framework and in three different coding agents. That's the promise of
 MCP: build the tool once, use it everywhere.
+
+## Resources
+
+- 📖 **[Design Multi-Agent AI Systems Using MCP and A2A](https://www.amazon.com/Design-Multi-Agent-Systems-Using-MCP/dp/1806116472)** — Check out Chapter 7
+- 📝 **[Claude Code Deep Dive: MCP Unleashed](https://medium.com/@the.gigi/claude-code-deep-dive-mcp-unleashed-0c7692f9c2c2)** — Medium article
+- 🔬 **[Making SPACE: Secure and Efficient Runtimes for Long-Running Agents](https://research.perplexity.ai/articles/making-space-secure-and-efficient-runtimes-for-long-running-agents)** — Perplexity research

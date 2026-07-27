@@ -12,3 +12,10 @@ dependencies = [
 
 [tool.uv]
 package = false
+
+# Pin the default index to PyPI so a machine-level proxy registry cannot rewrite
+# uv.lock source URLs to a host nobody outside that network can reach.
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
